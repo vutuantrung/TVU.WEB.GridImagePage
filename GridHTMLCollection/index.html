@@ -1,0 +1,71 @@
+<html>
+
+<head>
+
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+    <div class="row">
+        <input type="text" id="txtFolderImg" />
+        <input type="button" onclick="getImg()">
+    </div>
+    <div class="row" style="margin: 10px; display: flex; flex-direction: row;">
+        <div class="column" id="colGrid1" style="margin:5px;">
+            <img src="https://images.unsplash.com/photo-1520848315518-b991dd16a625?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8e403c595ef91e29068c62b3be55cf8c&w=1000&q=80">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlVozO1ptft0uBp4vKsgx5RAQFX8E3eYQP0pGzP612EfQ4mgCu">
+            <img src="https://www.nationalgeographic.com/content/dam/animals/2018/09/comedy-wildlife-awards-photos/comedy-wildlife-awards-squirel-stop.ngsversion.1537203605960.adapt.1900.1.jpg">
+        </div>
+        <div class="column" id="colGrid2" style="margin:5px;">
+            <img src="https://cdnfr2.img.sputniknews.com/images/102982/70/1029827055.jpg">
+            <img src="https://hdfreewallpaper.net/wp-content/uploads/2016/05/cool-animal-wallpapers.jpeg">
+            <img src="https://www.interris.it/img800-perch-gli-husky-hanno-gli-occhi-azzurri--138927.jpg">
+        </div>
+        <div class="column" id="colGrid3" style="margin:5px;">
+            <img src="http://www.wallpapermaiden.com/image/2017/02/19/anime-landscape-river-night-stars-reflection-anime-13499.jpg">
+            <img src="https://gfnc1kn6pi-flywheel.netdna-ssl.com/wp-content/uploads/2017/12/pictures-of-huskies.jpg">
+        </div>
+        <div class="column" id="colGrid4" style="margin:5px;">
+            <img src="http://www.nhm.ac.uk/content/dam/nhmwww/discover/space-pictures/night-sky-full-width.jpg">
+            <img src="https://images.unsplash.com/photo-1534841090574-cba2d662b62e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=99353ee668c53b4c242fb1fd0dd15d44&w=1000&q=80">
+        </div>
+        <div class="column" id="colGrid5" style="margin:5px;">
+            <img src="https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/istock-146773846.jpg?itok=nWr9VNqW&resize=1100x1100">
+            <img src="http://tadalafilforsale.net/data/media/14/53232362.jpg">
+            <img src="https://www.ravejungle.com/wp-content/uploads/2017/11/philadelphia-edm-scene.jpg">
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var modal = document.getElementById('myModal');
+    var span = document.getElementsByClassName("close")[0];
+    var modalImg = document.getElementById("img01");
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    document.addEventListener('click', function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        if(isImage(target)){
+            modal.style.display = "block";
+            modalImg.src = target.src;
+        }
+    }, false);
+
+    function isImage(i) {
+        return i instanceof HTMLImageElement;
+    }
+</script>
