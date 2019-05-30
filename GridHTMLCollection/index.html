@@ -1,16 +1,21 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-
-    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="modal.css">
 </head>
 
 <body>
     <div class="row">
-        <input type="text" id="txtFolderImg" />
-        <input type="button" onclick="getImg()">
+        <input type="text" id="maxInput" />
+        <input type="text" id="javNameInput" />
+        <input type="button" id='btnSetImg' value="Get images">
+        <output id="list"></output>
+    </div>
+    <div>
+        <input type="file" id="files" name="files[]" multiple />
     </div>
     <div class="row" style="margin: 10px; display: flex; flex-direction: row;">
         <div class="column" id="colGrid1" style="margin:5px;">
@@ -46,26 +51,19 @@
 </body>
 
 </html>
-
 <script>
-    var modal = document.getElementById('myModal');
-    var span = document.getElementsByClassName("close")[0];
-    var modalImg = document.getElementById("img01");
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    document.addEventListener('click', function (e) {
-        e = e || window.event;
-        var target = e.target || e.srcElement;
-        if(isImage(target)){
-            modal.style.display = "block";
-            modalImg.src = target.src;
-        }
-    }, false);
-
-    function isImage(i) {
-        return i instanceof HTMLImageElement;
-    }
+    $(document).ready(function () {
+        let name = 'ai-haneda';
+        let folder = "/"
+        $.ajax({
+            url: folder,
+            success: function (data) {
+                $(data).find("a").attr("href", function (i, val) {
+                    if (val.match(/\.(jpe?g|png|gif)$/)) {
+                        $("body").append("<img src='" + folder + val + "'>");
+                    }
+                });
+            }
+        });
+    })
 </script>
